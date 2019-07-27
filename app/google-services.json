@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "568843231459",
+    "firebase_url": "https://chatapp-4ac5e.firebaseio.com",
+    "project_id": "chatapp-4ac5e",
+    "storage_bucket": "chatapp-4ac5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568843231459:android:769ea9ba35249802",
+        "android_client_info": {
+          "package_name": "co.oragami.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568843231459-ktnh4b417c1qo34lf493s2svbijs2d53.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq8pcpbj5s-JbIHUXj3r71t6extB-3P1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568843231459-ktnh4b417c1qo34lf493s2svbijs2d53.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
