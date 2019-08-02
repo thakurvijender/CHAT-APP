@@ -1,6 +1,7 @@
 package co.oragami.chatapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +26,8 @@ public class registerActivity extends AppCompatActivity {
     private EditText editText,editText1;
     private Button button1;
     FirebaseAuth firebaseAuth;
+    public static final String CHAT_PREFS="prefs";
+    public static final String DIAPLAY_NAME_KEY="disppaly_name_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,13 +120,31 @@ public class registerActivity extends AppCompatActivity {
         String password=editText.getText().toString();
 
 
-        firebaseAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(mail,password).addOnCompleteListener(this, new OnCompleteListener  <com.google.firebase.auth.AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
                 if(task.isSuccessful()){
+                    Log.d("chatapp","user creation sucessfull");
+                    Intent new_intent= new Intent(registerActivity.this,MAin.class);
+                    startActivity(new_intent);
+                    Shared_orefrences();
+
+                }else{
+                    Log.d("chatapp","user creation failed");
+                    Log.d("chatapp","error"+task.getException().toString());
+                    Toast.makeText(registerActivity.this, "failed to register!!", Toast.LENGTH_SHORT).show();
+
 
                 }
             }
         });
+
+
+    }
+
+    public void Shared_orefrences(){
+        String display= autoCompleteTextView1.getText().toString();
+        SharedPreferences prefs= getSharedPreferences(CHAT_PREFS,0);
+        prefs.edit().putString(DIAPLAY_NAME_KEY,display).apply();
     }
 }
